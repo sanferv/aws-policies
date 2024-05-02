@@ -1,0 +1,27 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iam:ChangePassword",
+                "iam:CreateVirtualMFADevice",
+                "iam:DeleteVirtualMFADevice",
+                "iam:EnableMFADevice",
+                "iam:ResyncMFADevice",
+                "iam:DeactivateMFADevice"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Deny",
+            "NotAction": "iam:*",
+            "Resource": "*",
+            "Condition": {
+                "BoolIfExists": {
+                    "aws:MultiFactorAuthPresent": "false"
+                }
+            }
+        }
+    ]
+}
